@@ -22,7 +22,7 @@ test("Check that a book has been removed", () => {
     author: "Niall Richard Murphy", ISBN:456, available: true},
     {name:"Fantastic Mr Fox", author:"Roald Dahl", ISBN:789, available:true}
   ]);
-  library.withdraw(456);
+  library.remove(456);
   expect(library.books).toEqual([
     {name:"Don't Make Me Think", author:"Steve Krug", ISBN: 123, available: true},
     {name:"Fantastic Mr Fox", author:"Roald Dahl", ISBN:789, available:true}
@@ -34,5 +34,22 @@ test("Check that a book can be added to the library", () => {
   library.add("Growth Mindset", "Carol Dweck", 992);
   expect(library.books).toEqual([
     {name:"Growth Mindset", author:"Carol Dweck", ISBN:992, available:true}
+  ]);
+});
+
+test("Check that a book has been checked out", () => {
+  const library = new Library([
+    {name:"Don't Make Me Think", author:"Steve Krug", ISBN: 123, available: true},
+    {name:"Site Reliability Engineering", 
+    author: "Niall Richard Murphy", ISBN:456, available: true},
+    {name:"Fantastic Mr Fox", author:"Roald Dahl", ISBN:789, available:true}
+  ]);
+  
+  library.withdraw(789);
+  expect(library.books).toEqual([
+    {name:"Don't Make Me Think", author:"Steve Krug", ISBN: 123, available: true},
+    {name:"Site Reliability Engineering", 
+    author: "Niall Richard Murphy", ISBN:456, available: true},
+    {name:"Fantastic Mr Fox", author:"Roald Dahl", ISBN:789, available:false}
   ]);
 });

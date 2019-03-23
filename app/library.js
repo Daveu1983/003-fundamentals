@@ -7,9 +7,29 @@ class Library {
     const book1 = {name:name, author:author, ISBN:ISBN, available:true};
     this.books.push(book1);
   }
-  withdraw(library,ISBN){
+  remove(ISBN){
 
-    library.filter(bok => bok.ISBN != ISBN);
+    const filtered_book = this.books.filter(function(book){
+      if (book.ISBN != ISBN){
+        return true;
+      }else{
+        return false
+      }
+    });
+    this.books = filtered_book;
+  }
+
+  withdraw(ISBN){
+
+    const checkOut = this.books.map(function(book){
+      if (book.ISBN === ISBN){
+        book.available = false;
+        return book;
+      }else {
+        return book;
+      }
+    });
+    this.books = checkOut;
   }
 }
 
