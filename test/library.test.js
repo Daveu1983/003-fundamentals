@@ -53,3 +53,21 @@ test("Check that a book has been checked out", () => {
     {name:"Fantastic Mr Fox", author:"Roald Dahl", ISBN:789, available:false}
   ]);
 });
+
+  test("Check that a book has been checked returned", () => {
+    const library = new Library([
+      {name:"Don't Make Me Think", author:"Steve Krug", ISBN: 123, available: false},
+      {name:"Site Reliability Engineering", 
+      author: "Niall Richard Murphy", ISBN:456, available: true},
+      {name:"Fantastic Mr Fox", author:"Roald Dahl", ISBN:789, available:true}
+    ]);
+    
+    library.returnBook(123);
+    expect(library.books).toEqual([
+      {name:"Don't Make Me Think", author:"Steve Krug", ISBN: 123, available: true},
+      {name:"Site Reliability Engineering", 
+      author: "Niall Richard Murphy", ISBN:456, available: true},
+      {name:"Fantastic Mr Fox", author:"Roald Dahl", ISBN:789, available:true}
+    ]);
+
+});

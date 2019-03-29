@@ -31,6 +31,19 @@ class Library {
     });
     this.books = checkOut;
   }
+
+  returnBook(ISBN){
+
+    const checkOut = this.books.map(function(book){
+      if (book.ISBN === ISBN){
+        book.available = true;
+        return book;
+      }else {
+        return book;
+      }
+    });
+    this.books = checkOut;
+  }
 }
 
 
