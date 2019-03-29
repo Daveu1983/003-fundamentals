@@ -23,8 +23,12 @@ class Library {
 
     const checkOut = this.books.map(function(book){
       if (book.ISBN === ISBN){
-        book.available = false;
-        return book;
+        if (book.available === false){
+          throw new Error("Book is already checked out")
+        }else{
+          book.available = false;
+          return book;
+        }
       }else {
         return book;
       }

@@ -54,6 +54,18 @@ test("Check that a book has been checked out", () => {
   ]);
 });
 
+test("check book that is already checked out can't be borrowed", () =>{
+  const library = new Library ([
+  {name:"Don't Make Me Think", author:"Steve Krug", ISBN: 123, available: true},
+  {name:"Site Reliability Engineering", 
+  author: "Niall Richard Murphy", ISBN:456, available: false},
+  {name:"Fantastic Mr Fox", author:"Roald Dahl", ISBN:789, available:true}
+]);
+expect(() => {
+  library.withdraw(456);
+  }).toThrowError( new Error("Book is already checked out"));
+});
+
   test("Check that a book has been checked returned", () => {
     const library = new Library([
       {name:"Don't Make Me Think", author:"Steve Krug", ISBN: 123, available: false},
