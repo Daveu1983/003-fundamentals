@@ -44,6 +44,16 @@ class Library {
     });
     this.books = checkOut;
   }
+
+  canBookBeCheckedOut(ISBN){
+    this.books.forEach(book => {
+      if (book.ISBN === ISBN){
+        if (book.available === false){
+          throw new Error("Book is already checked out")
+        }
+      }
+    });
+  }
 }
 
 
